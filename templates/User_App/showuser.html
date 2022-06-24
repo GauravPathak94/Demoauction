@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>SHOW LAPTOPS</title>
+{% endblock %}
+
+{% block content %}
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">USERNAME</th>
+      <th scope="col">FIRST NAME</th>
+      <th scope="col">Last NAME</th>
+      <th scope="col">EMAIL</th>
+      <th scope="col">CONTACT NUMBER</th>
+      <th scope="col">GENDER</th>
+      
+        <th>UPDATE</th>
+        <th>DELETE</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for user in data %}
+    <tr>
+      <th>{{user.username}}</th>
+      <td>{{user.first_name}}</td>
+      <td>{{user.last_name}}</td>
+      <td>{{user.email}}</td>
+      <td>{{user.user_contact}}</td>
+      <td>{{user.gender}}</td>
+      
+      <td><button class="btn btn-warning"><a href="{% url 'update_url' user.id %}">UPDATE</a></button></td>
+      <td><button class="btn btn-danger"><a  href="{% url 'delete_url' user.id %}">DELETE</a></button></td>
+
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
